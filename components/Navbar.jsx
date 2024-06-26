@@ -63,7 +63,7 @@ const Navbar = () => {
                      <GiRingingBell className="text-white text-3xl hidden md:block relative"/>
                      {
                         notifications ? (
-                            <div className="hidden absolute bg-red-600 text-white text-base rounded-full p-3 w-[10px] h-[10px] top-[7px] right-[100px] items-center justify-center md:flex">
+                            <div className="hidden absolute bg-red-600 text-white text-base rounded-full p-3 w-[10px] h-[10px] top-[7px] right-[93px] items-center justify-center md:flex">
                                 <span>2</span>
                             </div>
                         ) : null

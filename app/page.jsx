@@ -1,6 +1,7 @@
 // this is page that is getting served on the / route that is the home route 
 import React from 'react'
 import InfoBoxes from '@/components/InfoBoxes';
+import HomeProperties from '@/components/HomeProperties';
 
 const HomePage = () => {
   return (
@@ -30,9 +31,7 @@ const HomePage = () => {
       </div>
 
       <InfoBoxes />
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde accusamus praesentium dignissimos nostrum vitae eius, dolorum amet voluptate perferendis, deleniti distinctio voluptatem possimus modi quaerat iusto veritatis cupiditate, rem quia. Vel deserunt, laborum veniam laboriosam reiciendis quos eum illo ab architecto amet suscipit facere sequi excepturi fuga at, ut quia, velit recusandae atque mollitia similique porro temporibus hic? Nesciunt, laboriosam esse amet ullam nemo itaque ducimus nam et ex consequatur harum neque earum deserunt quis aliquid blanditiis. Cumque, nemo! Molestias aliquam ullam magni id delectus sunt sapiente nisi eligendi! Similique excepturi accusamus, quam sunt, amet aperiam distinctio, nam corrupti ipsum mollitia ea libero minus voluptate dignissimos omnis! Unde necessitatibus error commodi accusamus officia tempore illo. Placeat, debitis! Eaque, sed laudantium.
-      </div>
+      <HomeProperties />
     </>
   )
 }
