@@ -72,7 +72,7 @@ const Navbar = () => {
                      <Image src={profileImage} alt="profile image" width={35} height={35} className="relative" onClick={handleProfileModal}/>
                      {
                         profileModal ? (
-                            <div className="flex flex-col gap-3 top-[67px] right-[10px] shadow-2xl absolute px-4 pt-2 rounded-lg bg-white text-black text-base h-auto w-[145px] justify-center items-center">
+                            <div className="flex flex-col z-50 gap-3 top-[67px] right-[10px] shadow-2xl absolute px-4 pt-2 rounded-lg bg-white text-black text-base h-auto w-[145px] justify-center items-center">
                                 <span className="">hello</span>
                                 <span className="">hello</span>
                                 <span className="">hello</span>
