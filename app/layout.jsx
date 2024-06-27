@@ -3,6 +3,7 @@ import '@/assets/styles/globals.css'
 import Navbar from '@/components/Navbar'
 import { montserrat } from './fonts'
 import Footer from '@/components/Footer'
+import AuthProvider from '@/components/AuthProvider'
 
 //adding the meta data
 //next js searches for this keyword called as the metadata as it is
@@ -13,13 +14,15 @@ export const metadata = {
 
 const MainLayout = ({children}) => {
   return (
-    <html lang='en' className={montserrat.className}>
-        <body>
-            <Navbar />
-            <div>{children}</div> 
-            <Footer />  
-        </body>
-    </html>
+    <AuthProvider>
+      <html lang='en' className={montserrat.className}>
+          <body>
+              <Navbar />
+              <div>{children}</div> 
+              <Footer />  
+          </body>
+      </html>
+    </AuthProvider>
   )
 }
 
