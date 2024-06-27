@@ -14,6 +14,7 @@ import { properties } from "@/properties";
 const Navbar = () => {
     //session data
     const {data:session , status} = useSession()
+    const profileImageFromGoogle = session?.user?.image
 
     const [mobileModal , showMobileModal] = useState(false)
     const [profileModal , setProfileModal] = useState(false)
@@ -39,8 +40,8 @@ const Navbar = () => {
         }
 
         setAuthProviders()
+        
     },[])
-
   return (
     <>
         <div className="bg-blue-700 w-full p-3 flex gap-11 items-center justify-between pl-11 pr-11">
@@ -71,7 +72,7 @@ const Navbar = () => {
             {/* button  */}
             <div className="flex gap-5 items-center">
             {
-                providers && Object.values(providers).map((provider , index)=>(
+                !session && providers && Object.values(providers).map((provider , index)=>(
                     <button onClick={()=>(signIn(provider.id))} key={index} className="bg-gray-800 hover:opacity-55 hidden duration-300 ease-in-out md:flex items-center gap-3 text-white text-sm px-4 py-2 rounded-lg"><span className="inline-block"><FaGoogle /></span>Login or Register</button>
                 ))
             }
@@ -92,13 +93,15 @@ const Navbar = () => {
                         ) : null
                      }
                      {/* render this when there is no image in the google account of the person  */}
-                     <Image src={profileImage} alt="profile image" width={35} height={35} className="relative" onClick={handleProfileModal}/>
+                     <Image src={profileImageFromGoogle || profileImage} alt="profile image" width={35} height={35} className="relative" onClick={handleProfileModal}/>
                      {
                         profileModal ? (
-                            <div className="flex flex-col z-50 gap-3 top-[67px] right-[10px] shadow-2xl absolute px-4 pt-2 rounded-lg bg-white text-black text-base h-auto w-[145px] justify-center items-center">
-                                <span className="">hello</span>
-                                <span className="">hello</span>
-                                <span className="">hello</span>
+                            <div className="flex flex-col z-50 gap-3 top-[67px] right-[10px] shadow-2xl absolute px-4 py-2 rounded-lg bg-white text-black text-base h-auto w-[145px] justify-center items-center">
+                                <span className="hover:cursor-pointer hover:text-blue-500">Your Profile</span>
+                                <span className="hover:cursor-pointer hover:text-blue-500">Saved</span>
+                                <span className="hover:cursor-pointer hover:text-blue-500" onClick={()=>{
+                                    signOut()
+                                }}>Logout</span>
                             </div>
                         ) : null
                      }
@@ -121,7 +124,7 @@ const Navbar = () => {
                     }
                     {
                         session ? (
-                            <Image src={profileImage} alt="profile image" width={35} height={35} className="relative" onClick={handleProfileModal}/>
+                            <Image src={profileImageFromGoogle || profileImage} alt="profile image" width={35} height={35} className="relative" onClick={handleProfileModal}/>
                         ) : null
                     }
                 </div>
