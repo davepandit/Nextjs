@@ -1,5 +1,4 @@
 import GoogleProvider from "next-auth/providers/google";
-import { pages } from "next/dist/build/templates/app-page";
 
 //auth options
 export const authOptions = {
