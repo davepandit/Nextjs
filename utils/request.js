@@ -8,7 +8,10 @@ const fetchProperties = async() => {
             return []
         }
 
-      const res = await fetch(`${apiDomain}/properties`)
+      const res = await fetch(`${apiDomain}/properties`, {
+        cache: 'no-store'
+      })
+      //It tells Next.js to fetch fresh data on every request and not to store or reuse any cached version of this data.
       
       if(!res.ok){
         throw new Error('Failed to fetch the data')
