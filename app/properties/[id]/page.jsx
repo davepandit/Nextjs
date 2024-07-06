@@ -11,6 +11,7 @@ import Link from 'next/link'
 import PropertyDetails from '@/components/PropertyDetails'
 import PropertyImages from '@/components/PropertyImages'
 import BookmarkButton from '@/components/BookmarkButton'
+import ShareButtons from '@/components/ShareButtons'
 
 const SinglePropertyPage = () => {
   const {id} = useParams()
@@ -65,7 +66,7 @@ const SinglePropertyPage = () => {
       )}
         {!loading && property && (
           <>
-            <PropertyHeaderImage image={property.images[0]} />
+            <PropertyHeaderImage image={property?.images[0]} />
             <section>
             <div className='container m-auto py-6 px-6'>
               <Link
@@ -83,7 +84,7 @@ const SinglePropertyPage = () => {
                 <PropertyDetails property={property} />
                 <aside className='space-y-4'>
                   <BookmarkButton property={property} />
-                  {/* <ShareButtons property={property} /> */}
+                  <ShareButtons property={property} />
                   {/* <PropertyContactForm property={property} /> */}
                 </aside>
               </div>

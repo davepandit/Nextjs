@@ -98,7 +98,7 @@ const Navbar = () => {
                         profileModal ? (
                             <div className="flex flex-col z-50 gap-3 top-[67px] right-[10px] shadow-2xl absolute px-4 py-2 rounded-lg bg-white text-black text-base h-auto w-[145px] justify-center items-center">
                                 <Link href='/profile'><span className="hover:cursor-pointer hover:text-blue-500">Your Profile</span></Link>
-                                <span className="hover:cursor-pointer hover:text-blue-500">Saved</span>
+                                <Link href='/properties/saved'><span className="hover:cursor-pointer hover:text-blue-500">Saved</span></Link>
                                 <span className="hover:cursor-pointer hover:text-blue-500" onClick={()=>{
                                     signOut()
                                 }}>Logout</span>
