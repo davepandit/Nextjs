@@ -124,6 +124,8 @@ const PropertyEditForm = () => {
         body: formData,
       });
 
+      //sending the form data into the body of the request 
+
       if (res.status === 200) {
         router.push(`/properties/${id}`);
       } else if (res.status === 401 || res.status === 403) {
