@@ -13,15 +13,7 @@ const nextConfig = {
                 pathname: '**',
               },
         ]
-    },
-    async rewrites() {
-        return [
-          {
-            source: '/api/properties/search',
-            destination: '/api/properties/search',
-          },
-        ];
-      },
+    }
 };
 
 export default nextConfig;
