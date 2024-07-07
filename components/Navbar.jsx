@@ -9,9 +9,10 @@ import Link from "next/link";
 import profileImage from '@/assets/images/profile.png'
 import { GiRingingBell } from "react-icons/gi";
 import { signIn , signOut , useSession , getProviders } from "next-auth/react";
-import { properties } from "@/properties";
+import { useGlobalContext } from "@/context/GlobalContext";
 
 const Navbar = () => {
+    const { unreadCount, setUnreadCount } = useGlobalContext();
     //session data
     const {data:session , status} = useSession()
     const profileImageFromGoogle = session?.user?.image
@@ -42,6 +43,25 @@ const Navbar = () => {
         setAuthProviders()
         
     },[])
+
+    useEffect(() => {
+        if (!session) return;
+    
+        const fetchUnreadMessages = async () => {
+          try {
+            const res = await fetch('/api/messages/unread-count');
+    
+            if (res.status === 200) {
+              const data = await res.json();
+              setUnreadCount(data);
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        };
+    
+        fetchUnreadMessages();
+      }, [session]);
   return (
     <>
         <div className="bg-blue-700 w-full p-3 flex gap-11 items-center justify-between pl-11 pr-11">
@@ -84,11 +104,11 @@ const Navbar = () => {
              session ? (
                  <div className="flex gap-5 items-center">
                      {/* notifications icon  */}
-                     <GiRingingBell className="text-white text-3xl hidden md:block relative"/>
+                     <Link href='/messages'><GiRingingBell className="text-white text-3xl hidden md:block relative"/></Link>
                      {
-                        notifications ? (
+                        unreadCount > 0 && notifications ? (
                             <div className="hidden absolute bg-red-600 text-white text-base rounded-full p-3 w-[10px] h-[10px] top-[7px] right-[93px] items-center justify-center md:flex">
-                                <span>2</span>
+                                <span>{unreadCount}</span>
                             </div>
                         ) : null
                      }
