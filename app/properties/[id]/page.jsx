@@ -12,6 +12,7 @@ import PropertyDetails from '@/components/PropertyDetails'
 import PropertyImages from '@/components/PropertyImages'
 import BookmarkButton from '@/components/BookmarkButton'
 import ShareButtons from '@/components/ShareButtons'
+import PropertyContactForm from '@/components/PropertyContactForm'
 
 const SinglePropertyPage = () => {
   const {id} = useParams()
@@ -85,7 +86,7 @@ const SinglePropertyPage = () => {
                 <aside className='space-y-4'>
                   <BookmarkButton property={property} />
                   <ShareButtons property={property} />
-                  {/* <PropertyContactForm property={property} /> */}
+                  <PropertyContactForm property={property} />
                 </aside>
               </div>
             </div>
